@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatWave — Real-Time Chat</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">ChatWave</span>
+      </div>
+      <button class="new-chat-btn" id="newChatBtn" title="New Chat">+</button>
+    </div>
+
+    <div class="online-status">
+      <span class="pulse-dot"></span>
+      <span id="onlineCount">3 online</span>
+    </div>
+
+    <nav class="room-list">
+      <p class="room-label">ROOMS</p>
+      <ul id="roomList">
+        <li class="room-item active" data-room="general">
+          <span class="room-hash">#</span>
+          <span>general</span>
+          <span class="unread-badge" style="display:none">0</span>
+        </li>
+        <li class="room-item" data-room="random">
+          <span class="room-hash">#</span>
+          <span>random</span>
+          <span class="unread-badge" style="display:none">0</span>
+        </li>
+        <li class="room-item" data-room="dev-talk">
+          <span class="room-hash">#</span>
+          <span>dev-talk</span>
+          <span class="unread-badge" style="display:none">0</span>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-avatar" id="userAvatar">U</div>
+      <div class="user-info">
+        <span class="user-name" id="displayName">User</span>
+        <span class="user-status">● Active</span>
+      </div>
+      <button class="settings-btn" id="settingsBtn" title="Settings">⚙</button>
+    </div>
+  </aside>
+
+  <!-- Main Chat Area -->
+  <main class="chat-main">
+    <header class="chat-header">
+      <div class="chat-title">
+        <span class="channel-hash">#</span>
+        <span id="currentRoom">general</span>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="searchToggle" title="Search">⌕</button>
+        <div class="typing-indicator" id="typingIndicator" style="display:none">
+          <span></span><span></span><span></span>
+          <small>Someone is typing…</small>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-bar" id="searchBar" style="display:none">
+      <input type="text" id="searchInput" placeholder="Search messages…" autocomplete="off"/>
+      <button id="searchClose">✕</button>
+    </div>
+
+    <!-- Messages -->
+    <div class="messages-container" id="messagesContainer">
+      <div class="welcome-message" id="welcomeMsg">
+        <div class="welcome-icon">⬡</div>
+        <h2>Welcome to <strong>#general</strong></h2>
+        <p>This is the beginning of the channel. Say hello!</p>
+      </div>
+    </div>
+
+    <!-- Message Input -->
+    <footer class="chat-footer">
+      <button class="emoji-btn" id="emojiBtn" title="Emoji">☻</button>
+      <div class="emoji-picker" id="emojiPicker" style="display:none">
+        <span>😀</span><span>😂</span><span>😍</span><span>😎</span>
+        <span>🤔</span><span>👍</span><span>🔥</span><span>💯</span>
+        <span>🎉</span><span>❤️</span><span>✨</span><span>🚀</span>
+        <span>😢</span><span>😡</span><span>🤣</span><span>👀</span>
+      </div>
+      <div class="input-wrap">
+        <textarea
+          id="messageInput"
+          placeholder="Message #general…"
+          rows="1"
+          autocomplete="off"
+        ></textarea>
+      </div>
+      <button class="send-btn" id="sendBtn" title="Send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </footer>
+  </main>
+
+  <!-- Name Modal -->
+  <div class="modal-overlay" id="nameModal">
+    <div class="modal">
+      <div class="modal-logo">⬡</div>
+      <h2>Welcome to ChatWave</h2>
+      <p>Choose a username to get started</p>
+      <input type="text" id="usernameInput" placeholder="Your username…" maxlength="20" autocomplete="off"/>
+      <button id="joinBtn">Join Chat</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
